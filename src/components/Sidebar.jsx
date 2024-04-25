@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { toggleTheme } from "../utils/appSlice";
 import { FaSun } from "react-icons/fa";
 import { RiMoonClearFill } from "react-icons/ri";
+import { Link, NavLink } from "react-router-dom";
 const Sidebar = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
   const theme = useSelector((state) => state.app.theme); // Access theme from Redux store
@@ -23,30 +24,43 @@ const Sidebar = () => {
 
   if (!isMenuOpen) return null; // early return pattern!
   return (
-    <div className="p-2 fixed left-0 min-w-[240px] top-16 bg-[#FFFFFF] dark:bg-[#0f0f0f] h-screen">
+    <div className="p-2 fixed left-0 min-w-[240px] top-16 bg-white dark:bg-[#0f0f0f] h-screen mt-3.5">
       {/* <h1 className="pt-5 pb-3 font-bold">Subscriptions</h1> */}
       <div className="cursor-pointer flex flex-col">
-        <div className="flex gap-6 items-center hover:bg-[#272727] group p-3 rounded-xl">
-          <GoHomeFill className="text-2xl text-black dark:text-white group-hover:text-gray-200" />
-          <span className="group-hover:text-white text-black dark:text-white">
-            Home
-          </span>
-        </div>
-        <div className="flex gap-6 items-center hover:bg-[#272727] group p-3 rounded-xl">
-          <SiYoutubeshorts className="text-2xl text-black dark:text-white group-hover:text-gray-200" />
-          <span className="group-hover:text-white text-black dark:text-white">
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive
+              ? "bg-[#f4f4f4] dark:bg-[#272727] font-medium rounded-xl"
+              : "bg-[#f4f4f4] dark:bg-[#272727] rounded-xl"
+          }
+        >
+          <Link to="/">
+            <div className="flex gap-6 items-center hover:bg-gray-200 dark:hover:bg-[#272727] group p-3 rounded-xl">
+              <GoHomeFill className="text-2xl text-black dark:text-white group-hover:text-black dark:group-hover:text-gray-200" />
+              <span className="group-hover:text-black dark:group-hover:text-white text-black dark:text-white">
+                Home
+              </span>
+            </div>
+          </Link>
+        </NavLink>
+
+        <div className="flex gap-6 items-center hover:bg-gray-200 dark:hover:bg-[#272727] group p-3 rounded-xl">
+          <SiYoutubeshorts className="text-2xl text-black dark:text-white group-hover:text-black dark:group-hover:text-gray-200" />
+          <span className="group-hover:text-black dark:group-hover:text-white text-black dark:text-white">
             Shorts
           </span>
         </div>
-        <div className="flex gap-6 items-center hover:bg-[#272727] group p-3 rounded-xl">
-          <MdOutlineSubscriptions className="text-2xl text-black dark:text-white group-hover:text-gray-200" />
-          <span className="group-hover:text-white text-black dark:text-white">
+        <div className="flex gap-6 items-center hover:bg-gray-200 dark:hover:bg-[#272727] group p-3 rounded-xl">
+          <MdOutlineSubscriptions className="text-2xl text-black dark:text-white group-hover:text-black dark:group-hover:text-gray-200" />
+          <span className="group-hover:text-black dark:group-hover:text-white text-black dark:text-white">
             Subscriptions
           </span>
         </div>
-        <div className="flex gap-6 items-center hover:bg-[#272727] group p-3 rounded-xl">
-          <SiYoutubemusic className="text-2xl text-black dark:text-white group-hover:text-gray-200" />
-          <span className="group-hover:text-white text-black dark:text-white">
+
+        <div className="flex gap-6 items-center hover:bg-gray-200 dark:hover:bg-[#272727] group p-3 rounded-xl">
+          <SiYoutubemusic className="text-2xl text-black dark:text-white group-hover:text-black dark:group-hover:text-gray-200" />
+          <span className="group-hover:text-black dark:group-hover:text-white text-black dark:text-white">
             Youtube Music
           </span>
         </div>

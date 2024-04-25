@@ -3,6 +3,7 @@ import { YOUTUBE_VIDEOS_API } from "../utils/constant";
 import { CHANNEL_INFO } from "../utils/constant";
 import VideoCard from "./videoCard";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
@@ -42,7 +43,7 @@ const VideoContainer = () => {
         <div
           className={`flex items-center justify-center h-screen max-w-screen w-screen`}
         >
-          <h1 className="text-4xl font-bold text-center text-gray-300 w-full">
+          <h1 className="text-4xl font-bold text-center dark:text-gray-300 text-black w-full">
             Youtube API Limit Exceeded
           </h1>
         </div>
@@ -54,11 +55,13 @@ const VideoContainer = () => {
         >
           {videos.map((video) => {
             return (
-              <VideoCard
-                key={video.id}
-                video={video}
-                thumbnailUrl={thumbnails[video.id]}
-              />
+              <Link to={`/watch?v=${video.id}`} key={`${video.id}`}>
+                <VideoCard
+                  key={video.id}
+                  video={video}
+                  thumbnailUrl={thumbnails[video.id]}
+                />
+              </Link>
             );
           })}
         </div>

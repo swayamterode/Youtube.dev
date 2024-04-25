@@ -25,7 +25,7 @@ const ButtonList = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
   return (
     <div
-      className={`${isMenuOpen ? "ml-60" : "ml-32"} flex gap-3 overflow-x-auto fixed left-0 bg-[#0f0f0f] py-4 w-full z-50 shadow-md dark:bg-[#0f0f0f]`}
+      className={`${isMenuOpen ? "ml-60" : "ml-32"} flex gap-3 overflow-x-auto fixed left-0 mt-2 bg-white dark:bg-[#0f0f0f] py-4 w-full z-50`}
     >
       {list.map((item) => (
         <Button key={item.name} name={item.name} />
